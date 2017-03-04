@@ -33,7 +33,7 @@ def count_words(phrase):
     for i in range(len(words)): 
         key = words[i]            
 
-        dictionary = dict()   
+        dictionary = {} 
         for i in words:   
             dictionary[i] = dictionary.get(i,0) + 1 
     return dictionary
@@ -61,8 +61,15 @@ def get_melon_price(melon_name):
         'No price found'
     """
 
-    return 0
+    all_melons = {"Watermelon": 2.95, 
+                    "Cantaloupe": 2.50, 
+                    "Musk": 3.25,
+                    "Christmas": 14.25,
+                    }
+    melon_price = all_melons.get(melon_name, "No price found")
 
+    return melon_price
+  
 
 def word_length_sorted(words):
     """Return list of word-lengths and words.
