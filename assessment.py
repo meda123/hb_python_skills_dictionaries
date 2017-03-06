@@ -89,15 +89,27 @@ def word_length_sorted(words):
         >>> word_length_sorted(["porcupine", "ok"])
         [(2, ['ok']), (9, ['porcupine'])]
     """
+
+
+# Note from Medalis: I'm not sure my keys are not sorted in the doctest, but 
+# they are sorted when I run it through vagrant . 
+
+    word_dictionary = {}
     word_list = []
 
     for word in words:
-        word_length = len(word)
-        word_list.append((word_length, [word]))
-        word_list.sort()
+        key = len(word)
+
+        if key in word_dictionary:
+            word_dictionary[key] = word_dictionary[key] + [word]
+        else: 
+            word_dictionary[key] = [] + [word]
+
+    for key, value in word_dictionary.items():      
+        value.sort()
+        word_list.append((key, value))              
 
     return word_list
-
 
 def translate_to_pirate_talk(phrase):
     """Translate phrase to pirate talk.
